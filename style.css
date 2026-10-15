@@ -31,3 +31,15 @@ button:hover {
   font-size: 22px;
   margin-top: 20px;
 }
+nav {
+  margin-bottom: 30px;
+}
+nav a {
+  color: #ffd166;
+  margin: 0 15px;
+  font-size: 18px;
+  text-decoration: none;
+}
+nav a:hover {
+  text-decoration: underline;
+}
