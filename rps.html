@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Камень, ножницы, бумага</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Угадай число</a>
+    <a href="rps.html">Камень, ножницы, бумага</a>
+  </nav>
+
+  <h1>Камень, ножницы, бумага</h1>
+  <p>Выбери свой ход:</p>
+
+  <button onclick="play('rock')">Камень</button>
+  <button onclick="play('scissors')">Ножницы</button>
+  <button onclick="play('paper')">Бумага</button>
+
+  <p id="message"></p>
+  <p id="score"></p>
+
+  <script src="rps.js"></script>
+</body>
+</html>
