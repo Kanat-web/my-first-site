@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Угадай число</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Угадай число</h1>
@@ -14,21 +15,6 @@
 
   <p id="message"></p>
 
-  <script>
-    let secret = Math.floor(Math.random() * 100) + 1;
-
-    function check() {
-      let guess = Number(document.getElementById("guess").value);
-      let message = document.getElementById("message");
-
-      if (guess === secret) {
-        message.textContent = "Верно! Ты угадал!";
-      } else if (guess < secret) {
-        message.textContent = "Загаданное число больше";
-      } else {
-        message.textContent = "Загаданное число меньше";
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
