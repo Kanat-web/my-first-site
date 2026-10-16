@@ -12,16 +12,31 @@ async function loadProducts() {
   }
 }
 
+function fillCategories() {
+  const select = document.getElementById("category");
+  const categories = [];
+  products.forEach(function (p) {
+    if (!categories.includes(p.category)) {
+      categories.push(p.category);
+    }
+  });
+  categories.forEach(function (c) {
+    const option = document.createElement("option");
+    option.value = c;
+    option.textContent = c;
+    select.appendChild(option);
+  });
+}
+
 function update() {
   const text = document.getElementById("search").value.toLowerCase();
   const sort = document.getElementById("sort").value;
-
   const category = document.getElementById("category").value;
 
   let result = products.filter(function (p) {
-  const matchText = p.title.toLowerCase().includes(text);
-  const matchCategory = category === "all" || p.category === category;
-  return matchText && matchCategory;
+    const matchText = p.title.toLowerCase().includes(text);
+    const matchCategory = category === "all" || p.category === category;
+    return matchText && matchCategory;
   });
 
   if (sort === "asc") {
@@ -57,23 +72,6 @@ function showProducts(items) {
 
 document.getElementById("search").addEventListener("input", update);
 document.getElementById("sort").addEventListener("change", update);
+document.getElementById("category").addEventListener("change", update);
 
 loadProducts();
-
-function fillCategories() {
-  const select = document.getElementById("category");
-  const categories = [];
-  products.forEach(function (p) {
-    if (!categories.includes(p.category)) {
-      categories.push(p.category);
-    }
-  });
-  categories.forEach(function (c) {
-    const option = document.createElement("option");
-    option.value = c;
-    option.textContent = c;
-    select.appendChild(option);
-  });
-}
-
-document.getElementById("category").addEventListener("change", update);
