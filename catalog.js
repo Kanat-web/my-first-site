@@ -5,10 +5,27 @@ async function loadProducts() {
     const response = await fetch("https://dummyjson.com/products?limit=30");
     const data = await response.json();
     products = data.products;
-    showProducts(products);
+    update();
   } catch (error) {
     document.getElementById("status").textContent = "Не удалось загрузить данные";
   }
+}
+
+function update() {
+  const text = document.getElementById("search").value.toLowerCase();
+  const sort = document.getElementById("sort").value;
+
+  let result = products.filter(function (p) {
+    return p.title.toLowerCase().includes(text);
+  });
+
+  if (sort === "asc") {
+    result.sort(function (a, b) { return a.price - b.price; });
+  } else if (sort === "desc") {
+    result.sort(function (a, b) { return b.price - a.price; });
+  }
+
+  showProducts(result);
 }
 
 function showProducts(items) {
@@ -33,12 +50,7 @@ function showProducts(items) {
   });
 }
 
-document.getElementById("search").addEventListener("input", function (e) {
-  const text = e.target.value.toLowerCase();
-  const filtered = products.filter(function (p) {
-    return p.title.toLowerCase().includes(text);
-  });
-  showProducts(filtered);
-});
+document.getElementById("search").addEventListener("input", update);
+document.getElementById("sort").addEventListener("change", update);
 
 loadProducts();
