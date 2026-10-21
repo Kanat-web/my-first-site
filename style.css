@@ -113,3 +113,7 @@ body.light .card {
   display: block;
   margin: 10px;
 }
+.fav-label input {
+  width: auto;
+  margin-right: 8px;
+}
