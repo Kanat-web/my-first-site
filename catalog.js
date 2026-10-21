@@ -1,4 +1,5 @@
 let products = [];
+let favs = JSON.parse(localStorage.getItem("favs") || "[]");
 
 async function loadProducts() {
   try {
@@ -28,15 +29,27 @@ function fillCategories() {
   });
 }
 
+function toggleFav(id) {
+  if (favs.includes(id)) {
+    favs = favs.filter(function (f) { return f !== id; });
+  } else {
+    favs.push(id);
+  }
+  localStorage.setItem("favs", JSON.stringify(favs));
+  update();
+}
+
 function update() {
   const text = document.getElementById("search").value.toLowerCase();
   const sort = document.getElementById("sort").value;
   const category = document.getElementById("category").value;
+  const onlyFav = document.getElementById("onlyFav").checked;
 
   let result = products.filter(function (p) {
     const matchText = p.title.toLowerCase().includes(text);
     const matchCategory = category === "all" || p.category === category;
-    return matchText && matchCategory;
+    const matchFav = !onlyFav || favs.includes(p.id);
+    return matchText && matchCategory && matchFav;
   });
 
   if (sort === "asc") {
@@ -66,6 +79,15 @@ function showProducts(items) {
       '<img src="' + p.thumbnail + '" alt="' + p.title + '" width="150">' +
       "<h2>" + p.title + "</h2>" +
       "<p>$" + p.price + "</p>";
+
+    const btn = document.createElement("button");
+    btn.className = "fav-btn";
+    btn.textContent = favs.includes(p.id) ? "❤️" : "🤍";
+    btn.addEventListener("click", function () {
+      toggleFav(p.id);
+    });
+    card.appendChild(btn);
+
     list.appendChild(card);
   });
 }
@@ -73,5 +95,6 @@ function showProducts(items) {
 document.getElementById("search").addEventListener("input", update);
 document.getElementById("sort").addEventListener("change", update);
 document.getElementById("category").addEventListener("change", update);
+document.getElementById("onlyFav").addEventListener("change", update);
 
 loadProducts();
