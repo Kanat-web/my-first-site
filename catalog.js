@@ -1,5 +1,6 @@
 let products = [];
 let favs = JSON.parse(localStorage.getItem("favs") || "[]");
+let cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
 async function loadProducts() {
   try {
@@ -37,6 +38,15 @@ function toggleFav(id) {
   }
   localStorage.setItem("favs", JSON.stringify(favs));
   update();
+}
+function addToCart(id) {
+  cart.push(id);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+}
+
+function updateCartCount() {
+  document.getElementById("cart-count").textContent = "🛒 " + cart.length;
 }
 
 function update() {
@@ -87,6 +97,13 @@ function showProducts(items) {
       toggleFav(p.id);
     });
     card.appendChild(btn);
+        const cartBtn = document.createElement("button");
+    cartBtn.className = "cart-btn";
+    cartBtn.textContent = "В корзину";
+    cartBtn.addEventListener("click", function () {
+      addToCart(p.id);
+    });
+    card.appendChild(cartBtn);
 
     list.appendChild(card);
   });
@@ -97,4 +114,5 @@ document.getElementById("sort").addEventListener("change", update);
 document.getElementById("category").addEventListener("change", update);
 document.getElementById("onlyFav").addEventListener("change", update);
 
+updateCartCount();
 loadProducts();
