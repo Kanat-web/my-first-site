@@ -117,3 +117,17 @@ body.light .card {
   width: auto;
   margin-right: 8px;
 }
+.cart-count {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding: 8px 14px;
+  background: #ffd166;
+  color: #222;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.cart-btn {
+  margin-top: 10px;
+  font-size: 16px;
+}
