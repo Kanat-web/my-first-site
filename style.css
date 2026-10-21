@@ -100,3 +100,16 @@ body.light .card {
   padding: 8px 14px;
   font-size: 16px;
 }
+.fav-btn {
+  background: none;
+  font-size: 26px;
+  padding: 0;
+  margin-top: 8px;
+}
+.fav-btn:hover {
+  background: none;
+}
+.fav-label {
+  display: block;
+  margin: 10px;
+}
