@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Канат: портфолио</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .about {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+    .skills {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .skills span {
+      background: #2b2b45;
+      color: #ffd166;
+      padding: 8px 14px;
+      border-radius: 20px;
+    }
+    body.light .skills span {
+      background: #e4e4ee;
+      color: #b5651d;
+    }
+    .project-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: #06d6a0;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Главная</a>
+    <a href="guess.html">Угадай число</a>
+    <a href="rps.html">Камень, ножницы, бумага</a>
+    <a href="catalog.html">Каталог</a>
+    <a href="portfolio.html">Портфолио</a>
+  </nav>
+
+  <h1>Канат</h1>
+  <p>Начинающий Frontend-разработчик, Нарын, Кыргызстан</p>
+
+  <div class="about">
+    <h2>Обо мне</h2>
+    <p>Я учусь веб-разработке в Окуу Мекен. Делаю сайты на HTML, CSS и JavaScript: игры, каталог с данными из API, поиск, фильтры и ночную тему. Хочу получить первый опыт на стажировке.</p>
+  </div>
+
+  <h2>Навыки</h2>
+  <div class="skills">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+    <span>Flexbox</span>
+    <span>API / fetch</span>
+    <span>Git и GitHub</span>
+  </div>
+
+  <h2>Проекты</h2>
+  <div class="cards">
+    <div class="card">
+      <h2>Мои игры</h2>
+      <p>Многостраничный сайт с играми и каталогом</p>
+      <a class="project-link" href="index.html">Открыть</a>
+    </div>
+    <div class="card">
+      <h2>Каталог</h2>
+      <p>Данные из API, поиск, сортировка, фильтр, избранное</p>
+      <a class="project-link" href="catalog.html">Открыть</a>
+    </div>
+    <div class="card">
+      <h2>Угадай число</h2>
+      <p>Игра на JavaScript со счётчиком попыток</p>
+      <a class="project-link" href="guess.html">Открыть</a>
+    </div>
+    <div class="card">
+      <h2>Камень, ножницы, бумага</h2>
+      <p>Игра против компьютера со счётом</p>
+      <a class="project-link" href="rps.html">Открыть</a>
+    </div>
+  </div>
+
+  <h2>Контакты</h2>
+  <p>Почта: akayashi1324@gmail.com</p>
+  <p><a class="project-link" href="https://github.com/Kanat-web" target="_blank">GitHub: Kanat-web</a></p>
+
+  <script src="theme.js"></script>
+</body>
+</html>
